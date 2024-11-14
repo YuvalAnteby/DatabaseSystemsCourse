@@ -8,11 +8,13 @@ if __name__ == '__main__':
         port='3307',
     )
     cursor = mydb.cursor()
+    # Write a query that returns the dates(date) and amount of new cases in south america, where there have been
+    # more than 150,000 new cases there(south america). The result should be ordered by new cases in ascending order.
     query = """
-            SELECT date, new_cases, continent
-            FROM covid_deaths
-            WHERE continent = "South America" AND new_cases > 150000
-            ORDER BY new_cases ASC
+SELECT      date, new_cases, continent
+FROM        covid_deaths
+WHERE       continent = "South America" AND new_cases > 150000
+ORDER BY    new_cases ASC;
     """
     cursor.execute(query)
     print('\n'.join(str(row) for row in cursor.fetchall()))
