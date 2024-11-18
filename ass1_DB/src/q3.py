@@ -18,9 +18,11 @@ SELECT 	winners.Winner AS driver_name, MIN(MINUTE(STR_TO_DATE(fastest_laps.Time,
 FROM	winners
 JOIN 	fastest_laps ON winners.Winner = fastest_laps.Driver
 WHERE   YEAR(Date) = 2000 -- Needed year
-        AND winners.Laps = (SELECT MAX(winners.Laps) -- Get the one with most laps 
-							FROM winners
-                            WHERE YEAR(Date) = 2000)
+        AND winners.Laps = (
+            SELECT  MAX(winners.Laps) -- Get the one with most laps 
+			FROM    winners
+            WHERE   YEAR(Date) = 2000
+            )
 GROUP BY driver_name
 ORDER BY min_time;
          """
