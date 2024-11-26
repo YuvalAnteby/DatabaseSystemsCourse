@@ -13,12 +13,16 @@ if __name__ == '__main__':
     # than 2 minutes. Order the average points in descending order.
     # The answer should contain both the car and the average points as “avg_pts”.
     query = """
-SELECT 		fastest_laps.Car, AVG(teams.PTS) AS avg_pts
-FROM 		fastest_laps, teams
-WHERE 		fastest_laps.Car = teams.Team
-AND 		MINUTE(STR_TO_DATE(Time, '%i:%s.%f')) < '2'
-GROUP BY 	fastest_laps.Car
-ORDER BY	avg_pts DESC;
+SELECT 
+    fastest_laps.Car, 
+    AVG(teams.PTS) AS avg_pts
+FROM fastest_laps
+JOIN teams
+ON fastest_laps.Car = teams.Team
+-- Have the lap time less than 120 seconds (2 minutes)
+WHERE MINUTE(STR_TO_DATE(Time, '%i:%s.%f')) * 60 + SECOND(STR_TO_DATE(Time, '%i:%s.%f')) < 120
+GROUP BY fastest_laps.Car -- Group results by cars
+ORDER BY avg_pts DESC; -- Descending order
     """
     cursor.execute(query)
     print(', '.join(str(row) for row in cursor.fetchall()))
