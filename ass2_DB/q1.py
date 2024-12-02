@@ -5,12 +5,13 @@ if __name__ == '__main__':
         host="localhost",
         user="root",
         password="yuval2001",
-        database="f1_data",
+        database="",
         port='3307',
     )
     cursor = mydb.cursor()
+    # Create a database for BIU Shoes with the name: biu shoes Write a query that does so.
     query = """
-
+CREATE DATABASE `biu_shoes`
     """
     cursor.execute(query)
     print(', '.join(str(row) for row in cursor.fetchall()))
