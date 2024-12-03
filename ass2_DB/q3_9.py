@@ -10,7 +10,20 @@ if __name__ == '__main__':
     )
     cursor = mydb.cursor()
     query = """
-
+INSERT INTO order_shoe(order_id, shoe_id) 
+VALUES
+     (1, 1),
+     (1, 2), 
+     (2, 3), 
+     (3, 4), 
+     (4, 5), 
+     (5, 6), 
+     (6, 7), 
+     (7, 8), 
+     (8, 9), 
+     (9, 10)
     """
     cursor.execute(query)
-    print(', '.join(str(row) for row in cursor.fetchall()))
+    mydb.commit()
+    cursor.close()
+    mydb.close()
