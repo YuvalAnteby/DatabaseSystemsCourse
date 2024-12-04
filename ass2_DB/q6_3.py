@@ -9,12 +9,15 @@ if __name__ == '__main__':
         port='3307',
     )
     cursor = mydb.cursor()
-    # The company has decided to expand to the UK market.
-    # Write a query that alter the size table to add the uk number TINY INT
-    # column and update the values accordingly.
+    # The company wants to populate the uk number column in the size table
+    # based on the above size chart.
+    # Write SQL queries (5) to update the uk number column values.
+    # European Size = 41, US Size = 9, UK Size = 7
     query = """
-ALTER TABLE size
-ADD uk_number TINYINT;
+UPDATE size
+SET uk_number = 7
+WHERE european_number = 41 
+AND us_number = 9;
     """
     cursor.execute(query)
     mydb.commit()

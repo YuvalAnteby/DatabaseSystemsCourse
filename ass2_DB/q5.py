@@ -9,12 +9,13 @@ if __name__ == '__main__':
         port='3307',
     )
     cursor = mydb.cursor()
-    # The company has decided to expand to the UK market.
-    # Write a query that alter the size table to add the uk number TINY INT
-    # column and update the values accordingly.
+    # The company has started offering pre-orders for special edition sneakers.
+    # Write a query that add a pre_order_available column to the upcoming table
+    # to indicate whether pre-orders are enabled, making it a single-bit type and
+    # default value 0.
     query = """
-ALTER TABLE size
-ADD uk_number TINYINT;
+ALTER TABLE upcoming 
+ADD pre_order_available BIGINT DEFAULT 0;
     """
     cursor.execute(query)
     mydb.commit()
