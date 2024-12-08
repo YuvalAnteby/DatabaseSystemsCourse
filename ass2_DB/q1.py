@@ -5,7 +5,6 @@ if __name__ == '__main__':
         host="localhost",
         user="root",
         password="yuval2001",
-        database="",
         port='3307',
     )
     cursor = mydb.cursor()
