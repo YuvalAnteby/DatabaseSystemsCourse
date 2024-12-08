@@ -20,7 +20,7 @@ SELECT c.first_name,
        c.last_name,
        SUM(s.price) AS total_revenue
 FROM customer AS c
--- Joining the tables on the matching keys
+-- Joining the tables on the matching keys between the customers and shoes bought
 JOIN order_customer AS oc 
     ON c.customer_id = oc.customer_id
 JOIN order_shoe AS os
