@@ -4,7 +4,7 @@ if __name__ == '__main__':
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="yuval2001",
+        password="root",
         database="biu_shoes",
         port='3307',
     )
@@ -15,13 +15,7 @@ if __name__ == '__main__':
     # including the shoe ID, name, and total revenue.
     # Write another query to display the entire view data.
     query = """
-CREATE VIEW total_sales_per_shoe AS
-    SELECT s.shoe_id, s.shoe_name, COUNT(os.shoe_id) * s.price AS total_revenue
-    FROM shoe AS s
-    JOIN order_shoe AS os
-        ON s.shoe_id = os.shoe_id
-    GROUP BY s.shoe_id, s.shoe_name, s.price;
--- Show the total sales using the view 
+-- Show the total sales using the view from q11_1.py
 SELECT * 
 FROM total_sales_per_shoe;
     """

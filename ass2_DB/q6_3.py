@@ -4,7 +4,7 @@ if __name__ == '__main__':
     mydb = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="yuval2001",
+        password="root",
         database="biu_shoes",
         port='3307',
     )
