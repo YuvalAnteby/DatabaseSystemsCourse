@@ -15,7 +15,6 @@ if __name__ == '__main__':
     # Write a query to combine the list of shoe names from the inventory with the list of special
     # upcoming release event names under namecolumn, and include an additional column, source,
     # indicating whether the entry is from the 'Inventory' or an 'Upcoming Release'.
-    # (Tip: we can hard coded a value as a column using aliasing)
     query = """
 -- Get the shoe's names from the shoe table as the ones in the inventory
 SELECT shoe.shoe_name AS namecolumn, 
