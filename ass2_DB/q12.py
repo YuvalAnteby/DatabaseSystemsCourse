@@ -26,7 +26,6 @@ if __name__ == '__main__':
     WHERE os.shoe_id IS NULL;
     """
     cursor.execute(query)
-    unsold_shoes = cursor.fetchall()
-    print(', '.join(str(row[0]) for row in unsold_shoes))
+    print(', '.join(str(row[0]) for row in cursor.fetchall()))
     cursor.close()
     mydb.close()
