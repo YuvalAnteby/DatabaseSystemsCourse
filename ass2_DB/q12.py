@@ -19,13 +19,11 @@ if __name__ == '__main__':
     # Filter out the shoes that have not been ordered (no matching shoe_id in 'order_shoe')
     # Display unsold shoes.
     query = """
-    SELECT s.shoe_name
-    FROM shoe AS s
-    LEFT JOIN order_shoe AS os
+SELECT s.shoe_name
+FROM shoe AS s
+LEFT JOIN order_shoe AS os
     ON s.shoe_id = os.shoe_id
-    WHERE os.shoe_id IS NULL;
+WHERE os.shoe_id IS NULL;
     """
     cursor.execute(query)
-    print(', '.join(str(row[0]) for row in cursor.fetchall()))
-    cursor.close()
-    mydb.close()
+    print(', '.join(str(row) for row in cursor.fetchall()))
